@@ -1,21 +1,63 @@
-"use client"
+'use client'
 
-import { addPost } from '@/lib/usePosts';
-import { revalidatePath } from 'next/cache';
-import React from 'react'
+import { useRouter } from "next/navigation";
+import React, { FormEvent, useState } from "react";
 
-export const PostForm = () => {
+const URL = process.env.NEXT_PUBLIC_BACKEND
+
+export const PostForm: React.FC = () => {
+  const [author, setAuthor] = useState("");
+  const [content, setContent] = useState("");
+
+  const router = useRouter()
+  console.log("url", URL)
+  const addPost = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND}/posts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: author,
+          content: content,
+        }),
+      });
+      router.refresh()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleAuthorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAuthor(e.target.value);
+  };
+
+  const handleContentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setContent(e.target.value);
+  };
 
   return (
     <div>
-      Postform
-      <form action={addPost}>
+      Postform {process.env.NEXT_PUBLIC_BACKEND}
+      <form onSubmit={addPost}>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" />
+        <input
+          type="text"
+          name="title"
+          value={author}
+          onChange={handleAuthorChange}
+        />
         <label htmlFor="content">Content</label>
-        <input type="text" name="content" />
+        <input
+          type="text"
+          name="content"
+          value={content}
+          onChange={handleContentChange}
+        />
         <button type="submit">Add Post</button>
       </form>
     </div>
   );
-}
+};
