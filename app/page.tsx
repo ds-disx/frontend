@@ -22,7 +22,7 @@ export default async function Home() {
           </div>
         </div>
       ))}
-      <PostForm/>
+      <PostForm />
     </main>
   );
 }

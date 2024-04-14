@@ -10,7 +10,7 @@ export const PostForm: React.FC = () => {
   const [content, setContent] = useState("");
 
   const router = useRouter()
-  console.log("url", URL)
+
   const addPost = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
