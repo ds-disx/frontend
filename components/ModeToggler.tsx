@@ -23,7 +23,7 @@ export function ModeToggler() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
+        <Button className="bg-inherit dark:border-gray-700"
           onClick={updateTheme}
           variant="outline"
           size="icon"

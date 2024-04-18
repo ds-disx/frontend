@@ -17,11 +17,8 @@ export default function Navbar() {
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
           Posts
         </Link>
-        <Link href={"/"} className="link-hover flex w-full items-center justify-center">
-          Help
-        </Link>
       </ul>
-      <ul className="fixed top-0 hidden left-0 h-16 w-full bg-slate-950 shadow z-10 shadow-gray-950 justify-evenly md:flex ">
+      <ul className="fixed top-0 hidden left-0 h-16 w-full dark:bg-slate-950 shadow z-10 dark:shadow-gray-950 justify-evenly md:flex ">
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
           Home
         </Link>
@@ -30,9 +27,6 @@ export default function Navbar() {
         </Link>
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
           Posts
-        </Link>
-        <Link href={"/"} className="link-hover flex w-full items-center justify-center">
-          Help
         </Link>
       </ul>
     </div>

@@ -39,8 +39,7 @@ export const PostForm: React.FC = () => {
   };
 
   return (
-    <div>
-      Postform {process.env.NEXT_PUBLIC_BACKEND}
+    <div className="pt-6">
       <form onSubmit={addPost}>
         <label htmlFor="title">Title</label>
         <input

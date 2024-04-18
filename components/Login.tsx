@@ -5,15 +5,19 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
 
 export const Login = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
-    <CardDark>
+    <>
       {!session ? (
-        <button onClick={() => signIn()}>Login</button>
+        <button onClick={() => signIn()}>
+          <CardDark>Login</CardDark>
+        </button>
       ) : (
-        <button onClick={() => signOut()}>Logout</button>
+        <button onClick={() => signOut()}>
+          <CardDark>Logout</CardDark>
+        </button>
       )}
-    </CardDark>
+    </>
   );
 };
