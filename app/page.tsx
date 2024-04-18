@@ -1,17 +1,16 @@
-import { PostCard } from "@/components/PostCard";
-import { PostForm } from "@/components/PostForm";
-import { getPosts } from "@/lib/usePosts";
+import { DisxCard } from "@/components/DisxCard";
+import { DisxForm } from "@/components/DisxForm";
+import { getDisxs } from "@/lib/useDisxs";
 
 export default async function Home() {
-  const posts = await getPosts();
+  const disxs = await getDisxs();
 
   return (
     <main>
       <ul className="flex flex-col gap-4">
-        {posts?.map((post) => <PostCard key={post.id} post={post} />)}
+        {disxs?.map((disx) => <DisxCard key={disx.id} disx={disx} />)}
       </ul>
-      
-      <PostForm />
+      <DisxForm />
     </main>
   );
 }

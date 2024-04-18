@@ -15,7 +15,7 @@ export default function Navbar() {
           Search
         </Link>
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
-          Posts
+          Create Disx
         </Link>
       </ul>
       <ul className="fixed top-0 hidden left-0 h-16 w-full dark:bg-slate-950 shadow z-10 dark:shadow-gray-950 justify-evenly md:flex ">
@@ -26,7 +26,7 @@ export default function Navbar() {
           Search
         </Link>
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
-          Posts
+          Create Disx
         </Link>
       </ul>
     </div>

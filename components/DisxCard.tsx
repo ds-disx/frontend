@@ -4,18 +4,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Post } from "@/types";
+import { Disx } from "@/types";
 import React from "react";
 import Link from "next/link";
 
-export const PostCard = ({ post }: { post: Post }) => {
+export const DisxCard = ({ disx }: { disx: Disx }) => {
   return (
-    <Link href={`/posts/${post.id}`}>
+    <Link href={`/disxs/${disx.id}`}>
       <CardDark className="text-left whitespace-nowrap dark:hover:bg-slate-700 hover:bg-gray-200 hover:cursor-pointer">
         <CardHeader>
-          <CardTitle>{post.title}</CardTitle>
+          <CardTitle>{disx.title}</CardTitle>
           <CardDescription className="text-ellipsis overflow-hidden">
-            {post.content}
+            {disx.content}
           </CardDescription>
         </CardHeader>
       </CardDark>

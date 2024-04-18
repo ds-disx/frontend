@@ -5,16 +5,16 @@ import React, { FormEvent, useState } from "react";
 
 const URL = process.env.NEXT_PUBLIC_BACKEND
 
-export const PostForm: React.FC = () => {
+export const DisxForm: React.FC = () => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
 
   const router = useRouter()
 
-  const addPost = async (e: FormEvent<HTMLFormElement>) => {
+  const addDisx = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND}/posts`, {
+      await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND}/disxs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const PostForm: React.FC = () => {
 
   return (
     <div className="pt-6">
-      <form onSubmit={addPost}>
+      <form onSubmit={addDisx}>
         <label htmlFor="title">Title</label>
         <input
           type="text"
@@ -55,7 +55,7 @@ export const PostForm: React.FC = () => {
           value={content}
           onChange={handleContentChange}
         />
-        <button type="submit">Add Post</button>
+        <button type="submit">Add disx</button>
       </form>
     </div>
   );
