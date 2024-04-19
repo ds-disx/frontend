@@ -6,7 +6,7 @@
 @layer components{
 
   .link-hover{
-    @apply hover:bg-slate-100 dark:hover:bg-slate-900 hover:underline decoration-slate-300 dark:decoration-slate-500 underline-offset-[1.5rem] transition duration-300 ease-out
+    @apply hover:bg-slate-100 dark:hover:bg-slate-900 hover:underline decoration-slate-300 dark:decoration-slate-500 underline-offset-[1rem] transition duration-300 ease-out
   }
 }
  

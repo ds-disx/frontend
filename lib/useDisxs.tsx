@@ -38,3 +38,20 @@ export const getDisxById = async (id: number): Promise<Disx | undefined> => {
     console.error(error);
   }
 };
+
+export const postDisx = async (disx: Disx): Promise<Disx | undefined> => { 
+  try {
+    const res = await fetch(`http://${process.env.NEXT_PUBLIC_BACKEND}/disxs`, {
+      method: "POST",
+      body: JSON.stringify(disx),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return res.json();
+
+  } catch (error) {
+    console.error(error);
+  }
+}

@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="mx-auto max-w-xs md:max-w-2xl xl:max-w-5xl 2xl:max-w-7xl ">
+      <body>
         <SessionProvider session={session}>
           <ThemeProvider
             attribute="class"
@@ -31,17 +31,19 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            <div className="grid-cols-3 gap-16 pt-4 md:grid bg">
-              {/* Left side */}
-              <div className="hidden flex-col md:flex md:pt-[4.5rem] gap-4">
-                {/* Profile card */}
-                <Login />
-                <ProfileCard />
-              </div>
+            <div className="mx-auto max-w-xs md:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl">
+              <Navbar />
+              <div className="grid-cols-3 gap-16 pt-4 md:grid pb-20 md:pb-0 bg">
+                {/* Left side */}
+                <div className="hidden flex-col md:flex md:pt-[4.5rem] gap-4">
+                  {/* Profile card */}
+                  <Login />
+                  <ProfileCard />
+                </div>
 
-              {/* Content side */}
-              <div className="col-span-2 md:pt-[4.5rem]">{children}</div>
+                {/* Content side */}
+                <div className="col-span-2 md:pb-4 md:pt-[4.5rem]">{children}</div>
+              </div>
             </div>
           </ThemeProvider>
         </SessionProvider>

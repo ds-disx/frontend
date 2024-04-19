@@ -1,5 +1,4 @@
 import { DisxCard } from "@/components/DisxCard";
-import { DisxForm } from "@/components/DisxForm";
 import { getDisxs } from "@/lib/useDisxs";
 
 export default async function Home() {
@@ -8,9 +7,10 @@ export default async function Home() {
   return (
     <main>
       <ul className="flex flex-col gap-4">
-        {disxs?.map((disx) => <DisxCard key={disx.id} disx={disx} />)}
+        {disxs?.map((disx) => (
+          <DisxCard key={disx.id} disx={disx} />
+        ))}
       </ul>
-      <DisxForm />
     </main>
   );
 }
