@@ -15,6 +15,8 @@ RUN \
     else echo "Lockfile not found." && exit 1; \
     fi
 
+# Copy .env.production to the container
+COPY .env.production .env.production
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -55,6 +57,9 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copy .env.production to the container
+COPY --from=builder /app/.env.production .env.production
 
 USER nextjs
 
