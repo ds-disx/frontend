@@ -2,7 +2,7 @@ import { CardDark, CardDescription, CardHeader, CardTitle } from "@/components/u
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getServerSession } from "next-auth";
 import { ModeToggler } from "@/components/ModeToggler";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { Login } from "@/components/Login";
 import Link from "next/link";
 
