@@ -24,7 +24,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Disx } from "@/types";
+import { DisxPost } from "@/types";
 import { postDisx } from "@/lib/useDisxs";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -38,6 +38,7 @@ export const DisxFormModal = () => {
   const router = useRouter();
 
   const { data: session } = useSession();
+  const token = session?.token?.accessToken as string;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,7 +49,7 @@ export const DisxFormModal = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const disx: Disx = {
+    const disx: DisxPost = {
       title: values.title,
       content: values.content,
       username: session?.user.name as string,
@@ -56,7 +57,7 @@ export const DisxFormModal = () => {
     };
 
     try {
-      await postDisx(disx);
+      await postDisx(disx, token);
       form.reset();
       router.refresh();
     } catch (error) {

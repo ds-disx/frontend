@@ -1,4 +1,4 @@
-import { Disx } from "@/types";
+import { Disx, DisxPost } from "@/types";
 
 const API_URL = `http://${process.env.NEXT_PUBLIC_BACKEND}`;
 
@@ -37,7 +37,6 @@ export const searchDisxsByTitle = async (title: string): Promise<Disx | undefine
   }
 };
 
-
 export const getDisxsByUsername = async (username: string): Promise<Disx[] | undefined> => {
   try {
     const res = await fetch(`${API_URL}/disxs/user/${username}`, {
@@ -74,13 +73,14 @@ export const getDisxById = async (id: number): Promise<Disx | undefined> => {
   }
 };
 
-export const postDisx = async (disx: Disx): Promise<Disx | undefined> => {
+export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | undefined> => {
   try {
     const res = await fetch(`${API_URL}/disxs`, {
       method: "POST",
       body: JSON.stringify(disx),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
