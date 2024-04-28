@@ -2,14 +2,6 @@
 
 import Link from "next/link";
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { DisxFormModal } from "@/components/DisxFormModal";
 import { useSession } from "next-auth/react";
 import { LoginModal } from "@/components/LoginModal";

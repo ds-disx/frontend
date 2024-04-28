@@ -37,7 +37,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 {/* Left side */}
                 <div className="hidden flex-col md:flex md:pt-[4.5rem] gap-4">
                   {/* Profile card */}
-                  <Login />
                   <ProfileCard />
                 </div>
 

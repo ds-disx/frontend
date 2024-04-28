@@ -1,14 +1,43 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { Token } from "@/types/next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-const handler = NextAuth ({
+export const authOptions: AuthOptions = {
   providers: [
     KeycloakProvider({
       clientId: process.env.KEYCLOAK_ID as string,
       clientSecret: process.env.KEYCLOAK_SECRET as string,
       issuer: process.env.KEYCLOAK_ISSUER,
+      wellKnown: `${process.env.KEYCLOAK_ISSUER}/.well-known/openid-configuration`,
+      idToken: true,
     }),
   ],
-});
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+        token.refreshToken = account.refresh_token;
+        token.accessTokenExpired = account.expires_at! * 1000;
+        token.user = user;
+
+        return token;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.token = token as unknown as Token; 
+
+      return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+
+// https://www.reddit.com/r/nextjs/comments/13eb1vj/how_to_get_nextauth_server_session_in_nextjs/
