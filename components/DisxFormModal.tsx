@@ -27,6 +27,7 @@ import {
 import { Disx } from "@/types";
 import { postDisx } from "@/lib/useDisxs";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -35,6 +36,8 @@ const formSchema = z.object({
 
 export const DisxFormModal = () => {
   const router = useRouter();
+
+  const { data: session } = useSession();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +51,8 @@ export const DisxFormModal = () => {
     const disx: Disx = {
       title: values.title,
       content: values.content,
+      username: session?.user.name as string,
+      userId: session?.token.user.id as string,
     };
 
     try {
@@ -98,7 +103,7 @@ export const DisxFormModal = () => {
             <DialogFooter>
               <DialogClose asChild>
                 <Button type="submit" disabled={!form.formState.isValid}>
-                  Share Disx!
+                  Share Disx
                 </Button>
               </DialogClose>
             </DialogFooter>
