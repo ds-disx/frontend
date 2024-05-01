@@ -1,3 +1,5 @@
+'use server'
+
 import { Disx, DisxPost } from "@/types";
 
 const API_URL = `http://${process.env.NEXT_PUBLIC_BACKEND}`;
