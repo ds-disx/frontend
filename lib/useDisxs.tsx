@@ -80,7 +80,7 @@ export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | un
       body: JSON.stringify(disx),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        // "Authorization": `Bearer ${token}`,
       },
     });
 
