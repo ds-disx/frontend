@@ -15,4 +15,4 @@ jobs:
 
       - name: set release date
         run: |
-          echo $(date -d @${GITHUB_EVENT_TIMESTAMP} "+%Y-%m-%d %H:%M:%S")
+          echo $(date -r ${GITHUB_EVENT_TIMESTAMP} "+%Y-%m-%d %H:%M:%S")
