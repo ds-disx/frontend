@@ -19,4 +19,4 @@ jobs:
           # Optionally strip `v` prefix
           strip_v: true
       - name: Use tag
-        run: echo ${{steps.tag.outputs.tag}}
+        run: echo ${{steps.tag.outputs.tag }}
