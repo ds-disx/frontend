@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Disx } from "@/types";
 import Link from "next/link";
 import React from "react";
 

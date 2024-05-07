@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,15 +18,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { DisxPost } from "@/types";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { postDisx } from "@/lib/useDisxs";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
