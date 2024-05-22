@@ -25,12 +25,16 @@ export async function ProfileCard() {
           </Link>
         </Avatar>
         <CardTitle className="pt-6 ">
-          <Link
-            href={`/user/${session?.user.name}`}
-            className="dark:hover:text-teal-700 hover:text-teal-700 hover:cursor-pointer"
-          >
-            {session ? session.user.name : "Name"}
-          </Link>
+          {session ? (
+            <Link
+              href={`/user/${session.user.name}`}
+              className="dark:hover:text-teal-700 hover:text-teal-700 hover:cursor-pointer"
+            >
+              {session.user.name}
+            </Link>
+          ) : (
+            <p>Name</p>
+          )}
         </CardTitle>
         <CardDescription>{session ? session.user.email : "@email"}</CardDescription>
       </CardHeader>
