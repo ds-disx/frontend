@@ -14,19 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # - name: Login to GitHub Container Registry
-      #   run: docker login --username derenserce --password ${{ secrets.GH_PAT }} ghcr.io
+      - name: Login to GitHub Container Registry
+        run: docker login --username derenserce --password ${{ secrets.GH_PAT }} ghcr.io
 
-      # - name: Build and push image
-      #   run: |
-      #     docker build -t ghcr.io/ds-disx/disx-frontend .
-      #     docker tag ghcr.io/ds-disx/disx-frontend:latest ghcr.io/ds-disx/disx-frontend:latest
-      #     docker push ghcr.io/ds-disx/disx-frontend:latest
-
-      - name: Azure Login
-        uses: Azure/login@v2.1.0
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Build and push image
+        run: |
+          docker build -t ghcr.io/ds-disx/disx-frontend .
+          docker tag ghcr.io/ds-disx/disx-frontend:latest ghcr.io/ds-disx/disx-frontend:latest
+          docker push ghcr.io/ds-disx/disx-frontend:latest
 
   deploy-to-azure:
     needs: build-and-push
