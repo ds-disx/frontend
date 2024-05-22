@@ -5,7 +5,6 @@ import { ProfileCard } from "@/components/ProfileCard";
 import Navbar from "@/components/Navbar";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/components/SesssionProvider";
-import { Login } from "@/components/Login";
 
 export const metadata: Metadata = {
   title: "Disx - Discuss music with others",

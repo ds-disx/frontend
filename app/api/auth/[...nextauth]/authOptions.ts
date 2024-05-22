@@ -1,5 +1,5 @@
 import { Token } from "@/types/next-auth";
-import NextAuth, { AuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
 export const authOptions: AuthOptions = {
