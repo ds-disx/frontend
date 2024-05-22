@@ -1,4 +1,4 @@
-export type DisxPost = {
+type DisxPost = {
   id?: number;
   title: string;
   content: string;
@@ -6,6 +6,11 @@ export type DisxPost = {
   userId: string;
 };
 
-export type Disx = DisxPost & {
+type Disx = {
+  id?: number;
+  title: string;
+  content: string;
+  username: string;
+  userId: string;
   createdAt: Date;
 };

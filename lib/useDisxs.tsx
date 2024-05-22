@@ -1,4 +1,5 @@
-import { Disx, DisxPost } from "@/types";
+'use server'
+
 
 const API_URL = `http://${process.env.NEXT_PUBLIC_BACKEND}`;
 
@@ -80,7 +81,7 @@ export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | un
       body: JSON.stringify(disx),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        // "Authorization": `Bearer ${token}`,
       },
     });
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,15 +18,7 @@ import { useForm } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { DisxPost } from "@/types";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { postDisx } from "@/lib/useDisxs";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -52,8 +46,10 @@ export const DisxFormModal = () => {
     const disx: DisxPost = {
       title: values.title,
       content: values.content,
-      username: session?.user.name as string,
-      userId: session?.token.user.id as string,
+      username: "test",
+      userId: "a5afa65c-c7ac-4bac-a53c-d91af1c345f7",
+      // username: session?.user.name as string,
+      // userId: session?.token.user.id as string,
     };
 
     try {
