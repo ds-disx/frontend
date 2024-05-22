@@ -21,5 +21,5 @@ jobs:
       - name: Build and push image
         run: |
           docker build -t ghcr.io/ds-disx/disx-frontend .
-          docker tag ghcr.io/ds-disx/disx-frontend:latest ghcr.io/ds-disx/disx-frontend:latest .
-          docker push ghcr.io/ds-disx/disx-frontend:latest 
+          docker tag ghcr.io/ds-disx/disx-frontend:latest ghcr.io/ds-disx/disx-frontend:latest
+          docker push ghcr.io/ds-disx/disx-frontend:latest
