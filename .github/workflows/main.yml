@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: CI/CD Pipeline
 
 on:
   push:
@@ -17,7 +17,6 @@ jobs:
       # - name: Login to GitHub Container Registry
       #   run: docker login --username derenserce --password ${{ secrets.GH_PAT }} ghcr.io
 
-
       # - name: Build and push image
       #   run: |
       #     docker build -t ghcr.io/ds-disx/disx-frontend .
@@ -28,4 +27,29 @@ jobs:
         uses: Azure/login@v2.1.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+  deploy-to-azure:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: Azure/login@v2.1.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Set Azure Subscription
+        run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Get AKS credentials
+        run: az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_RESOURCE_GROUP }} --overwrite-existing
+
+      - name: Rollout Restart Frontend on AKS
+        run: kubectl rollout restart deployment/frontend
+        continue-on-error: true
+      
+    
+  
             
