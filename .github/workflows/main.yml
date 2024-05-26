@@ -23,7 +23,7 @@ jobs:
           docker tag ghcr.io/ds-disx/disx-frontend:latest ghcr.io/ds-disx/disx-frontend:latest
           docker push ghcr.io/ds-disx/disx-frontend:latest
 
-  deploy-to-azure:
+  update-aks:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +43,7 @@ jobs:
 
       - name: Rollout Restart Frontend on AKS
         run: kubectl rollout restart deployment/frontend
-        continue-on-error: true
+        continue-on-error: true #If aks cluster is not available, the pipeline should not fail
       
     
   
