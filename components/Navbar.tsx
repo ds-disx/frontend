@@ -23,7 +23,7 @@ export default function Navbar() {
         </li>
         <li className="link-hover flex w-full items-center justify-center">Login</li>
       </ul>
-      <ul className="fixed top-0 hidden left-0 h-16 w-full bg-slate-50 dark:bg-slate-950 shadow z-10 dark:shadow-gray-950 justify-evenly md:flex ">
+      <ul className="fixed top-0 hidden left-0 h-16 w-full bg-slate-50 dark:bg-slate-950 shadow z-10 dark:border-b dark:border-slate-700 dark:shadow-gray-950 justify-evenly md:flex ">
         <Link href={"/"} className="link-hover flex w-full items-center justify-center">
           Home
         </Link>
