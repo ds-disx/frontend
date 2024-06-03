@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - dev 
+# temporary dev branch trigger
 
 jobs:
   build-and-push:
@@ -41,9 +43,7 @@ jobs:
         run: az aks get-credentials --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --name ${{ secrets.AZURE_RESOURCE_GROUP }} --overwrite-existing
 
       - name: Rollout Restart Frontend on AKS
-        run: kubectl rollout restart deployment/frontend
-        continue-on-error: true #If aks cluster is not available, the pipeline should not fail
-      
+        run: kubectl rollout restart deployment/frontend      
     
   
             
