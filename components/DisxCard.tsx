@@ -8,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
 import React from "react";
+import { ChatBubbleIcon } from "@radix-ui/react-icons";
 
 export const DisxCard = ({ disx }: { disx: Disx | undefined }) => {
   return (
@@ -31,6 +31,10 @@ export const DisxCard = ({ disx }: { disx: Disx | undefined }) => {
       </CardHeader>
       <CardContent>
         <CardDescription className="line-clamp-4">{disx?.content}</CardDescription>
+        <CardDescription className="-mb-3 flex gap-1 items-center font-semibold mt-2">
+          <ChatBubbleIcon />
+          {disx?.commentCount}
+        </CardDescription>
       </CardContent>
     </CardDark>
   );
@@ -55,7 +59,7 @@ export const DisxCardLight = ({ disx }: { disx: Disx | undefined }) => {
         <CardTitle className="font-semibold text-xl">{disx?.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <CardDescription className="line-clamp-4">{disx?.content}</CardDescription>
+        <CardDescription className="">{disx?.content}</CardDescription>
       </CardContent>
     </Card>
   );

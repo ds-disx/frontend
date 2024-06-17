@@ -1,5 +1,4 @@
-'use server'
-
+"use server";
 
 const API_URL = `http://${process.env.NEXT_PUBLIC_BACKEND}`;
 
@@ -74,7 +73,7 @@ export const getDisxById = async (id: number): Promise<Disx | undefined> => {
   }
 };
 
-export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | undefined> => {
+export const postDisx = async (disx: DisxPost, token: string) => {
   try {
     const res = await fetch(`${API_URL}/api/disxs`, {
       method: "POST",
@@ -84,8 +83,6 @@ export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | un
         // "Authorization": `Bearer ${token}`,
       },
     });
-
-    return res.json();
   } catch (error) {
     console.error(error);
   }

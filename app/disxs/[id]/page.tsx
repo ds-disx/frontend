@@ -1,6 +1,11 @@
+import { CommentCard } from "@/components/CommentCard";
+import { CommentFormModal } from "@/components/CommentFormModal";
 import { DisxCard, DisxCardLight } from "@/components/DisxCard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { getCommentsById } from "@/lib/useComments";
 import { getDisxById } from "@/lib/useDisxs";
+import { PlusIcon } from "lucide-react";
 
 type Props = {
   params: { id: number };
@@ -15,20 +20,24 @@ export async function generateMetadata({ params: { id } }: Props) {
   };
 }
 
-export default async function page({ params }: Props) {
+export default async function Home({ params }: Props) {
   const disx = await getDisxById(params.id);
+  const comments = await getCommentsById(params.id);
 
   return (
-    <main>
+    <main className="max-h-[89vh] overflow-y-scroll pr-2">
       <DisxCardLight disx={disx} />
-      {/* <Card>
-        <CardHeader>
-          <CardTitle>{disx?.title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription>{disx?.content}</CardDescription>
-        </CardContent>
-      </Card> */}
+      <div className="mt-2 flex justify-end">
+        <CommentFormModal disxId={params.id} />
+      </div>
+      <Separator className="mt-4" />
+      <ul className="mt-2 flex flex-col gap-2 ">
+        {comments?.map((comment) => (
+          <li key={comment.id}>
+            <CommentCard comment={comment} />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

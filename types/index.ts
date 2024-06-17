@@ -12,5 +12,16 @@ type Disx = {
   content: string;
   username: string;
   userId: string;
+  commentCount: number;
   createdAt: Date;
 };
+
+type UComment = {
+  id?: number;
+  content: string;
+  username: string;
+  userId: string;
+  disxId: number;
+  createdAt: Date;
+};
+
