@@ -32,11 +32,15 @@ export default async function Home({ params }: Props) {
       </div>
       <Separator className="mt-4" />
       <ul className="mt-2 flex flex-col gap-2 ">
-        {comments?.map((comment) => (
-          <li key={comment.id}>
-            <CommentCard comment={comment} />
-          </li>
-        ))}
+        {comments ? (
+          comments?.map((comment) => (
+            <li key={comment.id}>
+              <CommentCard comment={comment} />
+            </li>
+          ))
+        ) : (
+          <p>No comments found</p>
+        )}
       </ul>
     </main>
   );
