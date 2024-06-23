@@ -59,7 +59,7 @@ export const DeleteDisx = () => {
           )}
         />
         <Button type="submit" disabled={!form.formState.isValid}>
-          Share Disx
+          Delete Disx
         </Button>
       </form>
     </Form>
