@@ -31,8 +31,8 @@ export default function Navbar() {
           Search
         </Link>
         <li className="link-hover flex w-full items-center justify-center">
-          {/* {session ? <DisxFormModal /> : <LoginModal text="Create Disx" />} */}
-          <DisxFormModal />
+          {session ? <DisxFormModal /> : <LoginModal text="Create Disx" />}
+          {/* <DisxFormModal /> */}
         </li>
       </ul>
     </div>

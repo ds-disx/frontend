@@ -80,10 +80,26 @@ export const postDisx = async (disx: DisxPost, token: string) => {
       body: JSON.stringify(disx),
       headers: {
         "Content-Type": "application/json",
-        // "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
   } catch (error) {
     console.error(error);
   }
 };
+
+export const deleteDisx = async (disxId: number, token: string) => {
+  try {
+    const res = await fetch(`${API_URL}/api/disxs/${disxId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    
+  } catch (error) {
+    console.error(error);
+  }
+};
+

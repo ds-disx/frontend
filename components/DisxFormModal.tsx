@@ -46,10 +46,8 @@ export const DisxFormModal = () => {
     const disx: DisxPost = {
       title: values.title,
       content: values.content,
-      username: "test",
-      userId: "a5afa65c-c7ac-4bac-a53c-d91af1c345f7",
-      // username: session?.user.name as string,
-      // userId: session?.token.user.id as string,
+      username: session?.user.name as string,
+      userId: session?.token.user.id as string,
     };
 
     try {
