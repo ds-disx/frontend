@@ -22,7 +22,6 @@ export const authOptions: AuthOptions = {
         token.refreshToken = account.refresh_token;
         token.accessTokenExpired = account.expires_at! * 1000;
         token.user = user;
-
         return token;
       }
       return token;
@@ -30,8 +29,10 @@ export const authOptions: AuthOptions = {
     async session({ session, token }) {
       session.token = token as unknown as Token;
 
+      // console.log("session", session);
       return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
+

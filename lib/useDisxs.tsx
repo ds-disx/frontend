@@ -1,5 +1,4 @@
-'use server'
-
+"use server";
 
 const API_URL = `http://${process.env.NEXT_PUBLIC_BACKEND}`;
 
@@ -9,7 +8,7 @@ const formatDateTime = (date: Date): string => {
 
 export const getDisxs = async (): Promise<Disx[] | undefined> => {
   try {
-    const res = await fetch(`${API_URL}/disxs`, {
+    const res = await fetch(`${API_URL}/api/disxs`, {
       next: { revalidate: 0 },
     });
 
@@ -28,7 +27,7 @@ export const getDisxs = async (): Promise<Disx[] | undefined> => {
 
 export const searchDisxsByTitle = async (title: string): Promise<Disx | undefined> => {
   try {
-    const res = await fetch(`${API_URL}/disxs/search?title=${title}`, {
+    const res = await fetch(`${API_URL}/api/disxs/search?title=${title}`, {
       next: { revalidate: 0 },
     });
 
@@ -40,7 +39,7 @@ export const searchDisxsByTitle = async (title: string): Promise<Disx | undefine
 
 export const getDisxsByUsername = async (username: string): Promise<Disx[] | undefined> => {
   try {
-    const res = await fetch(`${API_URL}/disxs/user/${username}`, {
+    const res = await fetch(`${API_URL}/api/disxs/user/${username}`, {
       next: { revalidate: 0 },
     });
 
@@ -59,7 +58,7 @@ export const getDisxsByUsername = async (username: string): Promise<Disx[] | und
 
 export const getDisxById = async (id: number): Promise<Disx | undefined> => {
   try {
-    const res = await fetch(`${API_URL}/disxs/${id}`, {
+    const res = await fetch(`${API_URL}/api/disxs/${id}`, {
       next: { revalidate: 0 },
     });
 
@@ -74,19 +73,33 @@ export const getDisxById = async (id: number): Promise<Disx | undefined> => {
   }
 };
 
-export const postDisx = async (disx: DisxPost, token: string): Promise<Disx | undefined> => {
+export const postDisx = async (disx: DisxPost, token: string) => {
   try {
-    const res = await fetch(`${API_URL}/disxs`, {
+    const res = await fetch(`${API_URL}/api/disxs`, {
       method: "POST",
       body: JSON.stringify(disx),
       headers: {
         "Content-Type": "application/json",
-        // "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
-
-    return res.json();
   } catch (error) {
     console.error(error);
   }
 };
+
+export const deleteDisx = async (disxId: number, token: string) => {
+  try {
+    const res = await fetch(`${API_URL}/api/disxs/${disxId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    
+  } catch (error) {
+    console.error(error);
+  }
+};
+
