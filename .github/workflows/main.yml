@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev 
-# temporary dev branch trigger
 
 jobs:
   build-and-push:
